@@ -3,6 +3,9 @@
  */
 <template>
   <div class="table_list_fix">
+    <!-- 扩展性内容 -->
+    <slot name="content_context"></slot>
+
     <!-- table中间button eg:导出 -->
     <div v-if="exportBut && exportBut.length > 0" class="btn-operates">
       <a
@@ -22,17 +25,17 @@
       :border="border"
       :data="dataSource"
       v-loading="loading"
+      v-on="tableEvents"
       ref="multipleTable"
+      style="width: 100%;"
       :header-cell-style="{ background: '#f6f2ee' }"
-      :style="!exportBut ? 'width: 100%' : 'width: 100%; margin-top: 10px;'"
       @selection-change="handleSelectionChange"
     >
       <!-- 复选框 -->
       <el-table-column
         type="selection"
         style="width: 55px;"
-        :label="options && options.label"
-        v-if="options && options.selection"
+        v-if="options && options.selection && (!options.isShow || options.isShow()) "
       />
 
       <el-table-column
@@ -52,21 +55,31 @@
           :label="column.label"
           :align="column.align"
           :width="column.width"
+          v-if="!column.isShow || (column.isShow && column.isShow())"
         >
           <template slot-scope="scope">
             <template v-if="!column.render">
               <template v-if="column.formatter">
-                <span v-html="column.formatter(scope.row, column, scope.$index)"></span>
+                <span
+                  v-html="column.formatter(scope.row, column, scope.$index)"
+                  @click="column.click && column.click(scope.row, scope.$index)"
+                ></span>
               </template>
               <template v-else-if="column.newjump">
                 <router-link
-                  target="_blank"
                   class="newjump"
+                  v-bind="{ target : '_blank', ...column.target }"
                   :to="column.newjump(scope.row, column, scope.$index)"
-                >{{scope.row[column.prop]}}</router-link>
+                >{{scope.row[column.prop] || column.content}}</router-link>
               </template>
               <template v-else>
-                <span>{{scope.row[column.prop]}}</span>
+                <span
+                  :style="column.click ? 'color: #409EFF; cursor: pointer;' : null"
+                  @click="column.click && column.click(scope.row, scope.$index)"
+                >
+                  {{scope.row[column.prop] || column.content}}
+                  {{`${scope.row[column.prop] && column.unit ? column.unit : ''}`}}
+                </span>
               </template>
             </template>
             <template v-else>
@@ -87,8 +100,8 @@
       <el-table-column
         label="操作"
         align="center"
+        v-bind="options && options.props"
         v-if="operates && operates.length > 0"
-        :width="options && options.width"
       >
         <template slot-scope="scope">
           <div class="operate-group">
@@ -98,7 +111,7 @@
                 v-if="!btn.isShow || (btn.isShow && btn.isShow(scope.row, scope.$index))"
               >
                 <el-button
-                  :size="btn.size"
+                  :size="btn.size || 'small'"
                   :type="btn.type || `text`"
                   :icon="btn.icon"
                   :plain="btn.plain"
@@ -177,7 +190,8 @@ export default {
     exportBut: {
       type: Array
     },
-    options: Object
+    options: Object,
+    tableEvents: Object
   },
 
   data() {
@@ -223,6 +237,7 @@ export default {
 .table_list_fix {
   overflow: hidden;
   .btn-operates {
+    margin-bottom: 6px;
     a {
       color: #fff;
       text-decoration: none;
