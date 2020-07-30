@@ -105,18 +105,19 @@ let methods = {
       ? this.handleOnInput(
           this.formSearch[item.value],
           item.value,
-          item.rulesLength
+          item.rulesLength,
+          item.maxlength
         )
       : null;
   },
 
   // input渲染长度校验
-  handleOnInput(val, label, rulesLength) {
+  handleOnInput(val, label, rulesLength, maxlength = 11) {
     if (val && Number(val) <= 0) {
       this.formSearch[label] = 0;
     }
-    if (rulesLength && val && val.length > 11) {
-      this.formSearch[label] = this.formSearch[label].slice(0, 11);
+    if (rulesLength && val && val.length > maxlength) {
+      this.formSearch[label] = this.formSearch[label].slice(0, maxlength);
     }
   }
 };
