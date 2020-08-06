@@ -89,7 +89,7 @@ module.exports = {
       verbose: true
     }),
     new MiniCssExtractPlugin({
-      filename: "[name]/theme-chalk/index.css",
+      filename: "theme-chalk/index.css",
       ignoreOrder: false,
     })
   ],

@@ -6,7 +6,7 @@ import "element-ui/lib/theme-chalk/index.css";
 import TableFormList from '../lib/index' // 本地调试引入
 
 // import TableFormList from '../dist/TableFormList.js'; // 打包引入测试是否正常
-// import '../dist/TableFormList/theme-chalk/index.css';
+// import '../dist/theme-chalk/index.css';
 
 Vue.use(ElementUi);
 Vue.use(TableFormList);
