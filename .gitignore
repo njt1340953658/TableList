@@ -1,0 +1,19 @@
+.DS_Store
+.favorites.json
+cache/
+node_modules/
+.cache-loader/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+jsconfig.json
+package-lock.json
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.swp
+*.ntvs*
+*.njsproj
+*.sln
