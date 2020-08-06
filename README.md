@@ -1,6 +1,6 @@
 >components => tablelist基于element-ui对table表格的二次封装，一个快速生成查询列表的封装组件
 
-**注意**：本包是vue项目；全局引入，本包需依赖element-ui组件库。包构建并没有将element-ui等生产依赖进行打包，造成重复依赖
+**注意**：本包是vue项目；全局引入: 本包需依赖element-ui组件库。包构建并没有将element-ui等生产依赖进行打包，避免造成重复依赖
 
 ##### 安装使用
 ```js
