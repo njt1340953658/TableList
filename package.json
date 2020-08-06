@@ -12,7 +12,8 @@
   "keywords": [
     "Table",
     "TableList",
-    "TableForm"
+    "TableForm",
+    "element-table"
   ],
   "files": [
     "lib",
