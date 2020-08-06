@@ -2,13 +2,13 @@
 
 ##### 如何安装使用
 ```js
-// 添加项目依赖： npm install TableFormList -S
+// 添加项目依赖： npm install table-form-list -S
 // main.js中引入
 1. import router from "./router";
 2. import ElementUi from 'element-ui';
 3. import "element-ui/lib/theme-chalk/index.css";
-4. import TableFormList from TableFormList
-5. import 'TableFormList/theme-chalk/index.css';
+4. import TableFormList from "table-form-list"
+5. import 'table-form-list/theme-chalk/index.css';
 6. Vue.use(TableFormList);
 ```
 
