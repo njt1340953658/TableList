@@ -1,6 +1,6 @@
 {
   "name": "table-form-list",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "tablelist一个快速生成查询列表的封装组件",
   "author": "njt",
   "license": "ISC",
