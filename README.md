@@ -1,6 +1,6 @@
 >components => tablelist基于element-ui对table表格的二次封装，一个快速生成查询列表的封装组件
 
-**注意**：本包是vue项目；全局引入: 本包需依赖element-ui组件库。包构建并没有将element-ui等生产依赖进行打包，避免造成重复依赖
+**注意**：本包是vue项目；全局引入: 本包需依赖element-ui组件库。
 
 ##### 安装使用
 ```js
@@ -10,8 +10,7 @@
 2. import ElementUi from 'element-ui';
 3. import "element-ui/lib/theme-chalk/index.css";
 4. import TableFormList from "table-form-list"
-5. import 'table-form-list/dist/theme-chalk/index.css';
-6. Vue.use(TableFormList);
+5. Vue.use(TableFormList);
 ```
 
 > 灵活使用，复制项目文件中的lib/TableFormList.vue文件在自己项目中，方便更改扩展
