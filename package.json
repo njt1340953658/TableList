@@ -16,9 +16,9 @@
     "element-table"
   ],
   "files": [
-    "lib"
+    "dist"
   ],
-  "main": "lib/index.js",
+  "main": "dist/TableFormList.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --open --config build/webpack.dev.js",
     "build:test": "webpack --config build/webpack.dev.js",
