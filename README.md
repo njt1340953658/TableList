@@ -80,6 +80,16 @@ const tableSearch = [
       "end-placeholder": "结束日期",
       "value-format": "timestamp"
     }
+  },
+   {
+    type: "cascader",
+    label: "城市",
+    value: "city",
+    props: {
+      size: "mini",
+      expandTrigger: 'hover'
+    },
+    options: []
   }
 ];
 
