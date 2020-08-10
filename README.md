@@ -243,7 +243,7 @@ const columns = [
 | --- | --- | --- | --- | --- |
 | label | 表单label名称 | String | - | 是
 | value | 表单名称对应的key | String | - | 是
-| type | 表单类型(可选：select/picker) | String | input | 否
+| type | 表单类型(可选：select/picker/cascader) | String | input | 否
 | inputType | input type: number | String | 'number' | 否
 | maxlength | 最大输入的长度 | 'string' 'number' | - | 否
 | rulesLength | 输入文本校验长度控制 | Boolean | - | 否
@@ -254,16 +254,28 @@ const columns = [
 | handleReset | 重置所有组件 | Function() | - | 否
 ```jsx
 const tableSearch = [{
-  label: '操作时间',
-  value: 'time',
+  type: "picker",
+  label: "操作时间",
+  value: "operate",
   props: {
-    type: 'daterange',
-    style: '250px',
-      "range-separator": "至",
-      "start-placeholder": "开始日期"
-      "end-placeholder": "结束日期"
+    size: "mini",
+    type: "datetimerange",
+    "range-separator": "至",
+    "start-placeholder": "开始日期",
+    "end-placeholder": "结束日期",
+    "value-format": "timestamp"
     }
-}]
+  },
+  {
+    type: "cascader",
+    label: "城市",
+    value: "city",
+    props: {
+      size: "mini",
+      expandTrigger: 'hover'
+    },
+    options: []
+  }
 ```
 
 ##### options type {}

@@ -38,10 +38,18 @@
             clearable
             style="width: 100%;"
             placeholder="选择日期"
-            v-bind="item.props || { type: 'date' }"
-            v-else-if="item.type === 'picker'"
             v-model="formSearch[item.value]"
+            v-else-if="item.type === 'picker'"
+            v-bind="item.props || { type: 'date' }"
           />
+          <el-cascader
+            clearable
+            v-bind="item.props"
+            :options="item.options"
+            v-model="formSearch[item.value]"
+            v-else-if="item.type === 'cascader'"
+            :placeholder="`请输入${item.placeholder || item.label}`"
+          ></el-cascader>
           <el-input
             v-else
             clearable

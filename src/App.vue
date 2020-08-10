@@ -56,6 +56,45 @@ const tableSearch = [
       "end-placeholder": "结束日期",
       "value-format": "timestamp"
     }
+  },
+  {
+    type: "cascader",
+    label: "城市",
+    value: "city",
+    props: {
+      size: "mini",
+      expandTrigger: 'hover'
+    },
+    options: [
+      {
+        value: "zhinan",
+        label: "指南",
+        children: [
+          {
+            value: "shejiyuanze",
+            label: "设计原则",
+            children: [
+              {
+                value: "yizhi",
+                label: "一致"
+              },
+              {
+                value: "fankui",
+                label: "反馈"
+              },
+              {
+                value: "xiaolv",
+                label: "效率"
+              },
+              {
+                value: "kekong",
+                label: "可控"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ];
 
@@ -132,10 +171,12 @@ const dataSource = [
 ];
 
 // 表格扩展按钮
-const exportBut = (that) => [{
-  title: '批量导入',
-  method: () => that.handleBatchCourse()
-}]
+const exportBut = that => [
+  {
+    title: "批量导入",
+    method: () => that.handleBatchCourse()
+  }
+];
 
 export default {
   data() {
@@ -150,19 +191,17 @@ export default {
       },
       options: {
         index: true,
-        labelIndex: '序号'
+        labelIndex: "序号"
       },
       rules: {
-        name: [
-          { required: true, message: "请填写学生ID", trigger: "blur" }
-        ]
+        name: [{ required: true, message: "请填写学生ID", trigger: "blur" }]
       }
     };
   },
 
   methods: {
     handleBatchCourse() {
-      console.log('点击批量导入按钮')
+      console.log("点击批量导入按钮");
     }
   }
 };
