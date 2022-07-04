@@ -34,7 +34,7 @@
       :tableSearch="tableSearch"
       :columns="columns"
       :dataSource="dataSource"
-      :exportBut="exportBut(this)"
+      :extendButton="extendButton(this)"
       :operates="operates(this)"
     />
   </div>
@@ -166,7 +166,7 @@ const dataSource = [
 ];
 
 // 表格扩展按钮
-const exportBut = (that) => [{
+const extendButton = (that) => [{
   title: '批量导入',
   method: () => that.handleBatchCourse()
 }]
@@ -178,7 +178,7 @@ export default {
       operates,
       dataSource,
       tableSearch,
-      exportBut,
+      extendButton,
       formVal: {
         name: 18335
       },
@@ -217,7 +217,7 @@ export default {
 | pagination | 分页的配置项 | Object | - | 否
 | dataTotal | 数据总数 | Number | 0 | 否
 | operates | 操作列表按钮 | Array\[] | - | 否
-| exportBut | 列表导出、批量等按钮 | Array\[] | - | 否
+| extendButton | 列表扩展按钮，eg：导出、批量等按钮 | Array\[] | - | 否
 | tableSearch | 开始表格搜索 | Array\[] | - | 否
 
 
