@@ -46,6 +46,7 @@ input[type="number"] {
   color: dodgerblue;
 }
 .pagination[data-v-64a016b0] {
-  text-align: center;
+  text-align: end;
+  padding-bottom: 15px;
 }
 

@@ -26,11 +26,11 @@
   },
   "dependencies": {
     "@babel/runtime": "7.3.4",
-    "element-ui": "^2.13.2",
     "vue": "^2.6.11",
     "vue-router": "^3.4.0"
   },
   "devDependencies": {
+    "element-ui": "^2.13.2",
     "@babel/cli": "^7.10.4",
     "@babel/core": "^7.10.4",
     "@babel/plugin-transform-runtime": "^7.3.4",

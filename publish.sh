@@ -21,7 +21,7 @@ fi
 read -p "您是否要执行上传npm包命令(y/n): " command
 if [ "$command" == "y" ];then
     echo -e "\033[44;37mcommand: 开始执行publish... ...上传\033[0m"
-    # npm login
+    npm login
     npm version patch
     npm publish
     exit
