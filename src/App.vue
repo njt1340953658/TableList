@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="contaniner">
     <span>本地测试引入表格组件库开发</span>
     <br />
     <TableList
@@ -7,11 +7,12 @@
       :options="options"
       :value="formVal"
       :rules="rules"
-      :tableSearch="tableSearch"
+      :search="tableSearch"
       :columns="columns"
       :dataSource="dataSource"
-      :exportBut="exportBut(this)"
+      :extendButton="extendButton(this)"
       :operates="operates(this)"
+      :pagination="pagination"
     />
   </div>
 </template>
@@ -25,9 +26,6 @@ const tableSearch = [
     maxlength: 11,
     value: "name",
     rulesLength: true,
-    labelProps: {
-      "label-width": "130"
-    }
   },
   {
     type: "select",
@@ -45,12 +43,11 @@ const tableSearch = [
     ]
   },
   {
-    type: "picker",
+    type: "datePicker",
     label: "操作时间",
     value: "operate",
     props: {
-      size: "mini",
-      type: "datetimerange",
+      type: "date",
       "range-separator": "至",
       "start-placeholder": "开始日期",
       "end-placeholder": "结束日期",
@@ -62,7 +59,6 @@ const tableSearch = [
     label: "城市",
     value: "city",
     props: {
-      size: "mini",
       expandTrigger: 'hover'
     },
     options: [
@@ -171,7 +167,7 @@ const dataSource = [
 ];
 
 // 表格扩展按钮
-const exportBut = that => [
+const extendButton = that => [
   {
     title: "批量导入",
     method: () => that.handleBatchCourse()
@@ -185,16 +181,23 @@ export default {
       operates,
       dataSource,
       tableSearch,
-      exportBut,
+      extendButton,
       formVal: {
         name: 18335
       },
       options: {
         index: true,
-        labelIndex: "序号"
+        labelIndex: "序号",
+        pageExtend: {
+         layout: 'total, sizes, ->, prev, pager, next, jumper'
+        }
       },
       rules: {
         name: [{ required: true, message: "请填写学生ID", trigger: "blur" }]
+      },
+      pagination: {
+        currentPage: 1,
+        pageSize: 10
       }
     };
   },
@@ -206,3 +209,9 @@ export default {
   }
 };
 </script>
+
+<style lang="less" scoped>
+.contaniner {
+  margin-left: 230px;
+}
+</style>

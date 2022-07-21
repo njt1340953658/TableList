@@ -31,11 +31,12 @@
       :options="options"
       :value="formVal"
       :rules="rules"
-      :tableSearch="tableSearch"
+      :search="tableSearch"
       :columns="columns"
       :dataSource="dataSource"
       :extendButton="extendButton(this)"
       :operates="operates(this)"
+      :pagination="pagination"
     />
   </div>
 </template>
@@ -184,12 +185,19 @@ export default {
       },
       options: {
         index: true,
-        labelIndex: '序号'
+        labelIndex: '序号',
+        pageExtend: {
+         layout: 'total, sizes, ->, prev, pager, next, jumper'
+        }
       },
       rules: {
         name: [
           { required: true, message: "请填写学生ID", trigger: "blur" }
         ]
+      },
+      pagination: {
+        currentPage: 1,
+        pageSize: 10
       }
     };
   },
@@ -209,6 +217,7 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 | 必填项
 | --- | --- | --- | --- | --- |
 | index | 是否显示该行索引 | String | - | 否
+| isLayout | 搜索条件是否启用Row/Col布局 | Boolean | true | 否
 | border | 是否展示外边框和列边框 | Boolean | false | 否
 | loading | 页面是否加载中 | Boolean | false | 否
 | options | table参数扩展属性（复选框等）[Table Attributes](https://element.eleme.cn/2.8/#/zh-CN/component/table) | Object | - | 否
@@ -218,7 +227,7 @@ export default {
 | dataTotal | 数据总数 | Number | 0 | 否
 | operates | 操作列表按钮 | Array\[] | - | 否
 | extendButton | 列表扩展按钮，eg：导出、批量等按钮 | Array\[] | - | 否
-| tableSearch | 开始表格搜索 | Array\[] | - | 否
+| search | 表格搜索条件 | Array\[] | - | 否
 
 
 ##### Columns
@@ -299,7 +308,7 @@ const tableSearch = [{
 | selection | 复选框显示 | Boolean | false | 否
 | labelIndex | 序列号文本显示 | String | - | 否
 | slotcontent | 自定义操作按钮 | Element-Button | - | 否
-
+| pageExtend | 自定义分页 | Object | - | 否
 ##### operates type []
 列表操作列对象描述，使用用法：
 
@@ -316,7 +325,8 @@ const tableSearch = [{
 ##### TableList Events
 | 事件名 | 说明 | 类型 | 默认值 | 必填项
 | --- | --- | --- | --- | --- |
-| handleChangePage | 页码改变的回调，参数是改变后的页码及每页条数 | Function(currentPage) | - | 否
+| current-change | 页码改变的回调，参数是改变后的页码及每页条数 | Function(currentPage) | - | 否
+| size-change | 每页条数改变的回调，参数是改变后的页码及每页条数 | Function(size) | - | 否
 | handleSelectionChange | 当选择项发生变化时会触发该事件 | Function(selection) | - | 否
 | toggleRowSelection | 设置当前选中项回显、清空复选框事件 | Function(dom节点) | - | 否
 
